@@ -71,15 +71,6 @@ function App() {
     navigate("/");
   }
 
-  //Navigate to edit page with selected note
-  async function handleEdit(note) {
-    setFormData({
-      title: note.title,
-      content: note.content,
-    });
-    navigate(`/edit/${note.id}`);
-  }
-
   async function handleSearch(e) {
     setSearchTerm(e.target.value);
   }
@@ -136,7 +127,6 @@ function App() {
               notes={notes}
               loading={loading}
               onDelete={onDelete}
-              onUpdate={handleEdit}
             />
           }></Route>
         <Route

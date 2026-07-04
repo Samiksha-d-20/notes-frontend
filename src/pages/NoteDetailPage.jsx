@@ -1,7 +1,7 @@
 import NoteCard from "../components/NoteCard";
 import { useParams } from "react-router-dom";
 
-export default function NoteDetailPage({ notes, loading, onDelete, onUpdate }) {
+export default function NoteDetailPage({ notes, loading, onDelete }) {
   const { id } = useParams();
   const singleNote = notes.find((note) => note.id === id);
   if (loading) {
@@ -14,7 +14,7 @@ export default function NoteDetailPage({ notes, loading, onDelete, onUpdate }) {
 
   return (
     <div>
-      <NoteCard note={singleNote} onDelete={onDelete} onUpdate={onUpdate} />
+      <NoteCard note={singleNote} onDelete={onDelete} />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import "./NoteCard.css";
+import { useNavigate } from "react-router-dom";
 
-export default function NoteCard({ note, onDelete, onUpdate }) {
+export default function NoteCard({ note, onDelete }) {
+  const navigate = useNavigate();
   return (
     <div className="note-card">
       <h2 className="note-card-title">{note.title}</h2>
@@ -12,7 +14,9 @@ export default function NoteCard({ note, onDelete, onUpdate }) {
           Delete
         </button>
 
-        <button className="update-btn" onClick={() => onUpdate(note)}>
+        <button
+          className="update-btn"
+          onClick={() => navigate(`/edit/${note.id}`)}>
           Update
         </button>
       </div>
