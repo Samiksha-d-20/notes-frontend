@@ -1,26 +1,51 @@
-import axios from "axios";
+import api from "./api";
 
-const BASE_URL = "http://localhost:3000/notes";
+const formatNote = (note) => ({
+  ...note,
+  id: note._id,
+});
 
 //getnotes
-export const getNotes = async () => {
-  const res = await axios.get(BASE_URL);
-  return res.data;
+export const getNotes = async (page = 1, limit = 5, search = "") => {
+  const res = await api.get("/notes", {
+    params: {
+      page,
+      limit,
+      search,
+    },
+  });
+
+  return {
+    ...res.data,
+    data: res.data.data.map(formatNote),
+  };
 };
 
 //create note
 export const createNote = async (note) => {
-  const res = await axios.post(BASE_URL, note);
-  return res.data;
+  const res = await api.post("/notes", note);
+  return formatNote(res.data.data);
+};
+
+// Get single note
+export const getSingleNote = async (id) => {
+  const res = await api.get(`/notes/${id}`);
+
+  return {
+    ...res.data.data,
+    id: res.data.data._id,
+  };
 };
 
 //delete note
-export async function deleteNote(id) {
-  await axios.delete(`${BASE_URL}/${id}`);
-}
+export const deleteNote = async (id) => {
+  const res = await api.delete(`/notes/${id}`);
+
+  return res.data;
+};
 
 //update note
 export const updateNote = async (id, note) => {
-  const res = await axios.put(`${BASE_URL}/${id}`, note);
-  return res.data;
+  const res = await api.put(`/notes/${id}`, note);
+  return formatNote(res.data.data);
 };

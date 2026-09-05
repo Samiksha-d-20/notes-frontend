@@ -5,7 +5,7 @@ import PageButtons from "../components/PageButtons";
 export default function NotesPage({
   searchTerm,
   handleSearch,
-  paginatedNotes,
+  notes,
   loading,
   error,
   currentPage,
@@ -20,7 +20,7 @@ export default function NotesPage({
         setCurrentPage={setCurrentPage}
         totalPages={totalPages}
       />
-      <NotesList notes={paginatedNotes} loading={loading} error={error} />
+      <NotesList notes={notes} loading={loading} error={error} />
     </div>
   );
 }

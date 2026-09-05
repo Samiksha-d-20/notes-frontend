@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./NoteForm.css";
 export default function NoteForm({
   onSubmit,
@@ -5,6 +6,7 @@ export default function NoteForm({
   setFormData,
   buttonText,
 }) {
+  const [submitting, setSubmitting] = useState(false);
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -16,9 +18,14 @@ export default function NoteForm({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await onSubmit(formData);
-  };
 
+    try {
+      setSubmitting(true);
+      await onSubmit(formData);
+    } finally {
+      setSubmitting(false);
+    }
+  };
   return (
     <form className="note-form" onSubmit={handleSubmit}>
       <label htmlFor="title">Title : </label>
@@ -39,7 +46,9 @@ export default function NoteForm({
         placeholder="Write your note here..."
         required></textarea>
       <br />
-      <button type="submit">{buttonText}</button>
+      <button type="submit" disabled={submitting}>
+        {submitting ? "Saving..." : buttonText}
+      </button>
     </form>
   );
 }
