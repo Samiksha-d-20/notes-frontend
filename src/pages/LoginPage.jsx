@@ -32,7 +32,7 @@ export default function LoginPage() {
 
       const data = await loginUser(formData);
 
-      login(data.token);
+      await login(data.token);
 
       navigate("/");
     } catch (err) {

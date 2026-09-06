@@ -47,9 +47,15 @@ export function AuthProvider({ children }) {
     };
   }, []);
 
-  const login = (token) => {
+  const login = async (token) => {
     localStorage.setItem("token", token);
     setIsAuthenticated(true);
+    try {
+      const userData = await getProfile();
+      setUser(userData);
+    } catch (error) {
+      console.error("Failed to fetch user after login:", error);
+    }
   };
 
   const logout = () => {

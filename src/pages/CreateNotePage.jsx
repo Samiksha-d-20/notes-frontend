@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import NoteForm from "../components/NoteForm";
 
 export default function CreateNotePage({
@@ -5,6 +6,10 @@ export default function CreateNotePage({
   formData,
   setFormData,
 }) {
+  useEffect(() => {
+    setFormData({ title: "", content: "" });
+  }, []);
+
   return (
     <div>
       <h1>Create Note</h1>
