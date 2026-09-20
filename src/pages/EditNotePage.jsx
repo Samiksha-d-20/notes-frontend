@@ -36,20 +36,46 @@ export default function EditNotePage({ handleUpdate, formData, setFormData }) {
   }, [id, setFormData]);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return (
+      <main className="note-form-page">
+        <div className="loading-state">
+          <div className="spinner" />
+          <span>Loading note...</span>
+        </div>
+      </main>
+    );
   }
 
   if (error) {
-    return <h1>{error}</h1>;
+    return (
+      <main className="note-form-page">
+        <div className="note-form-header">
+          <h1 className="page-title">Edit note</h1>
+        </div>
+        <div className="inline-error">{error}</div>
+      </main>
+    );
   }
 
   if (!note) {
-    return <h1>Note not found</h1>;
+    return (
+      <main className="note-form-page">
+        <div className="note-form-header">
+          <h1 className="page-title">Edit note</h1>
+          <p className="page-subtitle">Note not found.</p>
+        </div>
+      </main>
+    );
   }
 
   return (
-    <div>
-      <h1>Edit Note</h1>
+    <main className="note-form-page">
+      <div className="note-form-header">
+        <h1 className="page-title">Edit note</h1>
+        <p className="page-subtitle">
+          Update the title or content of your note.
+        </p>
+      </div>
 
       <NoteForm
         onSubmit={(formData) => handleUpdate(id, formData)}
@@ -57,6 +83,6 @@ export default function EditNotePage({ handleUpdate, formData, setFormData }) {
         setFormData={setFormData}
         buttonText="Update Note"
       />
-    </div>
+    </main>
   );
 }

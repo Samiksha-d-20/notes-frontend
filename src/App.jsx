@@ -104,7 +104,6 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="app-title">Notes app</h1>
       <Routes>
         {/* Public routes */}
         <Route path="/register" element={<RegisterPage />} />

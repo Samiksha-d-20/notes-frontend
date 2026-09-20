@@ -1,55 +1,120 @@
+.note-detail-page {
+  width: min(760px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+
+.note-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.note-detail-back:hover {
+  color: var(--ink);
+}
+
 .note-card {
-  max-width: 700px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
   text-align: left;
 }
 
 .note-card-title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 1rem;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.note-card-divider {
+  height: 1px;
+  background: var(--line);
+  margin-bottom: 24px;
 }
 
 .note-card-content {
-  color: #4b5563;
+  color: var(--muted-dark);
+  font-size: 16px;
   line-height: 1.7;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
   white-space: pre-wrap;
 }
 
 .note-actions {
   display: flex;
-  gap: 1rem;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
 }
 
 .delete-btn,
 .update-btn {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
 }
 
 .delete-btn {
-  background: #dc2626;
+  background: var(--surface);
+  border: 1px solid #fecaca;
+  color: var(--danger);
 }
 
 .delete-btn:hover {
-  background: #b91c1c;
+  background: var(--danger-soft);
+  border-color: #fca5a5;
 }
 
 .update-btn {
-  background: #2563eb;
+  background: var(--blue-500);
+  color: #fff;
+  box-shadow: var(--shadow-button);
 }
 
 .update-btn:hover {
-  background: #1d4ed8;
+  background: var(--blue-600);
+}
+
+@media (max-width: 700px) {
+  .note-detail-page {
+    width: min(100% - 32px, 760px);
+    padding: 32px 0 48px;
+  }
+
+  .note-card {
+    padding: 22px;
+  }
+
+  .note-card-title {
+    font-size: 25px;
+  }
+
+  .note-actions {
+    flex-direction: column-reverse;
+  }
+
+  .delete-btn,
+  .update-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

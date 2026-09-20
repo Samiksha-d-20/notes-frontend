@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./NoteForm.css";
+
 export default function NoteForm({
   onSubmit,
   formData,
@@ -15,7 +16,6 @@ export default function NoteForm({
   };
 
   //handle form submission
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -26,29 +26,35 @@ export default function NoteForm({
       setSubmitting(false);
     }
   };
+
   return (
     <form className="note-form" onSubmit={handleSubmit}>
-      <label htmlFor="title">Title : </label>
-      <input
-        name="title"
-        id="title"
-        onChange={handleChange}
-        value={formData.title}
-        placeholder="Enter note title"
-        required
-      />
-      <label htmlFor="content">Content : </label>
-      <textarea
-        name="content"
-        id="content"
-        onChange={handleChange}
-        value={formData.content}
-        placeholder="Write your note here..."
-        required></textarea>
-      <br />
-      <button type="submit" disabled={submitting}>
-        {submitting ? "Saving..." : buttonText}
-      </button>
+      <div className="form-field">
+        <label htmlFor="title">Title</label>
+        <input
+          name="title"
+          id="title"
+          onChange={handleChange}
+          value={formData.title}
+          placeholder="Note title"
+          required
+        />
+      </div>
+      <div className="form-field">
+        <label htmlFor="content">Content</label>
+        <textarea
+          name="content"
+          id="content"
+          onChange={handleChange}
+          value={formData.content}
+          placeholder="Start writing your note here..."
+          required></textarea>
+      </div>
+      <div className="note-form-actions">
+        <button type="submit" className="btn btn-primary" disabled={submitting}>
+          {submitting ? "Saving..." : buttonText}
+        </button>
+      </div>
     </form>
   );
 }

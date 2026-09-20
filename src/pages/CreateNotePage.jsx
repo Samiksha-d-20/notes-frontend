@@ -11,14 +11,19 @@ export default function CreateNotePage({
   }, []);
 
   return (
-    <div>
-      <h1>Create Note</h1>
+    <main className="note-form-page">
+      <div className="note-form-header">
+        <h1 className="page-title">Create a new note</h1>
+        <p className="page-subtitle">
+          Capture your thoughts and ideas in one place.
+        </p>
+      </div>
       <NoteForm
         onSubmit={handleCreate}
         formData={formData}
         setFormData={setFormData}
         buttonText="Create Note"
       />
-    </div>
+    </main>
   );
 }

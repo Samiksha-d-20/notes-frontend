@@ -5,7 +5,12 @@ export default function ProtectedRoute() {
   const { isAuthenticated, authLoading } = useAuth();
 
   if (authLoading) {
-    return <h1>Checking authentication...</h1>;
+    return (
+      <div className="loading-state" style={{ minHeight: "60vh" }}>
+        <div className="spinner" />
+        <span>Checking authentication...</span>
+      </div>
+    );
   }
 
   if (!isAuthenticated) {

@@ -6,18 +6,16 @@ export default function NoteCard({ note, onDelete }) {
   return (
     <div className="note-card">
       <h2 className="note-card-title">{note.title}</h2>
-
+      <div className="note-card-divider" />
       <p className="note-card-content">{note.content}</p>
-
       <div className="note-actions">
-        <button className="delete-btn" onClick={() => onDelete(note.id)}>
-          Delete
-        </button>
-
         <button
           className="update-btn"
           onClick={() => navigate(`/edit/${note.id}`)}>
-          Update
+          Edit Note
+        </button>
+        <button className="delete-btn" onClick={() => onDelete(note.id)}>
+          Delete
         </button>
       </div>
     </div>
