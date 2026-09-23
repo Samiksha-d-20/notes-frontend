@@ -53,7 +53,9 @@ export default function NoteDetailPage({ onDelete }) {
   if (error) {
     return (
       <main className="note-detail-page">
-        <button className="note-detail-back" onClick={() => navigate("/")}>
+        <button
+          className="btn btn-primary note-detail-back"
+          onClick={() => navigate("/")}>
           <svg
             width="16"
             height="16"
@@ -76,7 +78,9 @@ export default function NoteDetailPage({ onDelete }) {
   if (!note) {
     return (
       <main className="note-detail-page">
-        <button className="note-detail-back" onClick={() => navigate("/")}>
+        <button
+          className="btn btn-primary note-detail-back"
+          onClick={() => navigate("/")}>
           <svg
             width="16"
             height="16"
@@ -99,7 +103,9 @@ export default function NoteDetailPage({ onDelete }) {
 
   return (
     <main className="note-detail-page">
-      <button className="note-detail-back" onClick={() => navigate("/")}>
+      <button
+        className="btn btn-primary note-detail-back"
+        onClick={() => navigate("/")}>
         <svg
           width="16"
           height="16"

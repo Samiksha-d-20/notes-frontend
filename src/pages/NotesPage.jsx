@@ -1,6 +1,7 @@
 import NotesList from "../components/NotesList";
 import SearchBox from "../components/SearchBox";
 import PageButtons from "../components/PageButtons";
+import { Link } from "react-router-dom";
 import "./NotesPage.css";
 
 export default function NotesPage({
@@ -23,7 +24,7 @@ export default function NotesPage({
             workspace
           </span>
         </div>
-        <a className="btn btn-primary" href="/create">
+        <Link className="btn btn-primary" to="/create">
           <svg
             width="16"
             height="16"
@@ -37,14 +38,19 @@ export default function NotesPage({
             <line x1="5" y1="12" x2="19" y2="12" />
           </svg>
           Create Note
-        </a>
+        </Link>
       </div>
 
       <div className="notes-search-row">
         <SearchBox searchTerm={searchTerm} handleSearch={handleSearch} />
       </div>
 
-      <NotesList notes={notes} loading={loading} error={error} />
+      <NotesList
+        notes={notes}
+        loading={loading}
+        error={error}
+        searchTerm={searchTerm}
+      />
 
       <PageButtons
         currentPage={currentPage}
